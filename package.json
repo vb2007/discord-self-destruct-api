@@ -2,7 +2,7 @@
   "name": "discord-self-destruct-api",
   "version": "1.0.0",
   "description": "A backend / API service for the Discord self-destruct tool that runs on the server and interacts with the clients.",
-  "main": "index.js",
+  "main": "dist/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
