@@ -41,11 +41,5 @@
       "quoteStyle": "single",
       "trailingCommas": "es5"
     }
-  },
-  "typescript": {
-    "formatter": {
-      "quoteStyle": "single",
-      "trailingCommas": "es5"
-    }
   }
 }
