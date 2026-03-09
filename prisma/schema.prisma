@@ -6,3 +6,11 @@ generator client {
     provider = "prisma-client-js"
     output   = "../generated/prisma"
 }
+
+model Users {
+    id        Int      @id @default(autoincrement())
+    username  String   @unique
+    discordToken String   @unique
+    tokenUpdatedAt DateTime @default(now())
+    createdAt DateTime @default(now())
+}
