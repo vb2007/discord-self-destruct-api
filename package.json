@@ -47,8 +47,6 @@
   "license": "AGPL-3.0-only",
   "packageManager": "pnpm@10.28.2",
   "dependencies": {
-    "@prisma/adapter-pg": "^7.4.2",
-    "@prisma/client": "^7.4.0",
     "axios": "^1.13.5",
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
@@ -59,8 +57,7 @@
     "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.3",
     "morgan": "^1.10.1",
-    "node-cron": "^4.2.1",
-    "pg": "^8.20.0"
+    "node-cron": "^4.2.1"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.0",
