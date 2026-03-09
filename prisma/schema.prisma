@@ -7,10 +7,21 @@ generator client {
     output   = "../generated/prisma"
 }
 
-model Users {
-    id        Int      @id @default(autoincrement())
-    username  String   @unique
-    discordToken String   @unique
-    tokenUpdatedAt DateTime @default(now())
-    createdAt DateTime @default(now())
+model User {
+    id  Int @id @default(autoincrement())
+    username    String  @unique
+    discordToken    String @unique
+    tokenUpdatedAt  DateTime    @default(now())
+    createdAt   DateTime  @default(now())
+}
+
+model Message {
+    id  Int @id @default(autoincrement())
+    messageId   String  @unique
+    channelId   String
+    userId  Int
+    expiresAt   DateTime
+    createdAt   DateTime  @default(now())
+
+    user    User    @relation(fields: [userId], references: [id])
 }
