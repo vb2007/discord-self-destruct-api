@@ -1,5 +1,22 @@
-import "dotenv/config";
-import { defineConfig, env } from "prisma/config";
+import { defineConfig } from "prisma/config";
+
+const {
+  DATABASE_HOST_ADDRESS,
+  DATABASE_USER,
+  DATABASE_PASSWORD,
+  DATABASE_NAME,
+} = process.env;
+
+if (
+  !DATABASE_HOST_ADDRESS ||
+  !DATABASE_USER ||
+  !DATABASE_PASSWORD ||
+  !DATABASE_NAME
+) {
+  throw new Error(
+    "Missing required environment variables: DATABASE_HOST_ADDRESS, DATABASE_USER, DATABASE_PASSWORD, DATABASE_NAME",
+  );
+}
 
 export default defineConfig({
   schema: "./prisma/schema.prisma",
@@ -7,6 +24,6 @@ export default defineConfig({
     path: "./prisma/migrations",
   },
   datasource: {
-    url: env("DATABASE_URL"),
+    url: `mysql://${DATABASE_USER}:${encodeURIComponent(DATABASE_PASSWORD)}@${DATABASE_HOST_ADDRESS}/${DATABASE_NAME}`,
   },
 });
