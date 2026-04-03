@@ -2,8 +2,8 @@
   "compilerOptions": {
     "target": "ES2020",
     "lib": ["ES2020"],
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
@@ -38,6 +38,10 @@
       "@/types/*": ["./types/*"],
       "@/config/*": ["./config/*"],
     },
+  },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node",
   },
   "include": ["src/**/*", "prisma"],
   "exclude": ["node_modules", "dist", "tests"],
