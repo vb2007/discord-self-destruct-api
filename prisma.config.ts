@@ -1,5 +1,11 @@
 import { defineConfig } from "prisma/config";
 
+try {
+  process.loadEnvFile();
+} catch {
+  // .env file not present or Node version < 20.12, continue with existing env
+}
+
 const {
   DATABASE_HOST_ADDRESS,
   DATABASE_USER,
