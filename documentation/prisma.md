@@ -40,3 +40,17 @@ pnpm db:studio #Prisma Studio at http://localhost:5555
 ## After Editing `schema.prisma`
 
 Always re-run `db:migrate` (dev) or `db:deploy` (prod), then `db:generate` to keep the client in sync with the schema.
+
+## Fixing possible DB permission issues
+
+When running `db:migrate`, I had an issue where the user lacked some SQL permissions for creating the shadown database.
+
+"Bandaid" fix, but just grant all permissions to that user temporarly using the MariaDB CLI.
+
+> [!CAUTION]
+> **NEVER** use this in a production environment, as a user with all permissions can cause serious damage if its credentials are leaked from the deployed codebase.
+
+```sql
+GRANT ALL PRIVILEGES ON *.* TO '<devUser>'@'%';
+FLUSH PRIVILEGES;
+```
