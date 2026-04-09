@@ -11,6 +11,8 @@ import { PrismaMariaDb } from "@prisma/adapter-mariadb";
 import dotenv from "dotenv";
 dotenv.config();
 
+const IP = process.env.IP || "localhost";
+const PORT = process.env.PORT || 3000;
 const DATABASE_HOST_ADDRESS = process.env.DATABASE_HOST_ADDRESS;
 const DATABASE_USER = process.env.DATABASE_USER;
 const DATABASE_PASSWORD = process.env.DATABASE_PASSWORD;
@@ -37,6 +39,11 @@ app.use(cors(corsOptions));
 app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
+
+const server = http.createServer(app);
+server.listen(PORT, () => {
+  console.log(`Express.js server started on http://${IP}:${PORT}`);
+});
 
 const adapter: PrismaMariaDb = new PrismaMariaDb({
   host: DATABASE_HOST_ADDRESS,
