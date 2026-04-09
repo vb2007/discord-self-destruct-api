@@ -25,6 +25,19 @@ if (
   throw new Error("Missing required environment variables!");
 }
 
+const corsOriginUrls: string[] = [];
+const corsOptions: cors.CorsOptions = {
+  origin: corsOriginUrls,
+  credentials: true,
+};
+
+const app = express();
+
+app.use(cors(corsOptions));
+app.use(compression());
+app.use(cookieParser());
+app.use(bodyParser.json());
+
 const adapter: PrismaMariaDb = new PrismaMariaDb({
   host: DATABASE_HOST_ADDRESS,
   user: DATABASE_NAME,
